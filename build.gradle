@@ -1,8 +1,8 @@
-apply plugin: 'java'
-
 plugins {
     id 'jacoco'
 }
+
+apply plugin: 'java'
 
 repositories {
     mavenCentral()
@@ -15,4 +15,9 @@ dependencies {
 
 test {
     outputs.upToDateWhen { false }
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
